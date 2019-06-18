@@ -1,0 +1,12 @@
+<script>
+        let p = [0,0,0,0,0,0,0];
+        for(let i=0;i < 10000;i++){
+            let rand = parseInt(Math.random()*9)+1 //1-9
+            p[rand<=6?rand:rand-3]++;
+           
+        }
+
+        for(let i=1;i<p.length;i++){
+            document.write(`${i} : ${p[i]}<br>`);
+        }
+    </script>

@@ -1,0 +1,23 @@
+<table borde="1" width="100%">
+    <script>
+        let row = 5;
+        let start = 2;
+        let nTd = 4
+
+        for (let k = 0; k < row; k++) {
+            document.write("<tr>");
+            for (let j = start; j <= (start+nTd); j++) {
+                document.write("<td bgcolor='pink'>");
+                for (let i = 1; i <= 9; i++) {
+                    let newj = j+k * nTd;
+                    let r = newj * i;
+                    document.write(`${j} X ${i} = ${r}<br>`);
+                }
+                document.write("</td>");
+            }
+        }
+
+
+    </script>
+
+</table>

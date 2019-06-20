@@ -1,0 +1,36 @@
+<script>
+    let body = document.createElement('body');
+    document.body = body ;
+    let head = document.createElement('h1');
+
+    let h1text = document.createTextNode('Hello World');
+    head.appendChild(h1text);
+    document.body.appendChild(head);
+    h1text.textContent = "Hello,Brad";
+
+    let hr = document.createElement('hr');
+    document.body.appendChild(hr);
+
+    let ul = document.createElement('ul');
+    body.append(ul);
+
+    for(let i=0;i<3;i++){
+        let li = document.createElement('li');
+        li.innerHTML = `${i+1}`;
+        ul.appendChild(li);
+
+        if(i==1) tempLi = li;
+    }
+
+    
+
+</script>
+
+<ul>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+
+
+</ul>

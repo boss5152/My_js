@@ -1,0 +1,21 @@
+<script>
+    function test1(a){
+        let n = parseInt(Math.random()*101);
+        document.write(n);
+        try{
+            test2(n);
+            return;
+        }catch(e){
+            document.write('')
+        }finally{
+
+        }
+    }
+    function test2(a){
+        if(a>=60){
+            document.write("test2,ok<br>");
+        }else{
+            throw "Ooop!";
+        }
+    }
+</script>

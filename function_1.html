@@ -1,9 +1,14 @@
+<script src="function_1.js"></script>
 <script>
-    function checkInput(){
-        document.write(`Ya! ${name}<br>`);
+    function ckId(){
+        let id = document.getElementById('id').value;
+        let isRight = checkTWId(id);
+        if(!isRight){
+            alert('XX');
+        }else{
+            alert('OK');
+        }
     }
-    function sayYa(ns){
-        for(let name of ns)
-    }
-
 </script>
+<input type="text" id="id">
+<input type="button" value="Check" onclick="ckId()">

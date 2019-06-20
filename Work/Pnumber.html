@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<title> 質數表 </title>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/Pnumber.css">
+</head>
+
+<body>
+    <table>
+        <script>
+            let row = 10;
+            let round = 0;
+            for (let k = 0; k < row; k++) {
+                document.write("<tr>");
+                for (let j = 1; j <= 10; j++) {
+                    let z = j + round;
+                    let i = 1;
+                    let factor = 0;
+                    while (i <= z) {
+                        if (z % i == 0) {
+                            factor++;
+                        }
+                        i++;
+                    }
+                    if (factor > 2) {
+                        document.write("<td>");                        
+                        document.write(z);
+
+                    } else {
+                        document.write("<td bgcolor='red'>");
+                        document.write(z);
+                    }
+
+                    document.write("</td>");
+                }
+                round += 10;
+            }
+
+        </script>
+
+
+    </table>
+</body>
+
+</html>

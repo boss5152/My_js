@@ -1,0 +1,23 @@
+<script>
+    function ID_create() {
+        let ID_faker;
+        let ID_area;
+        let ID_number;
+        //亂數生成英文字母，36進制
+        ID_area = ((parseInt(Math.random() * 26 + 10)).toString(36)).toUpperCase();
+        if (ID_area == 'L' || ID_area == 'R' || ID_area == 'S' || ID_area == 'Y') {
+            //有出現廢棄字母重跑
+            ID_create();
+            return;
+        }
+        
+
+        //取九個亂數數字
+        ID_faker = Math.random();
+        ID_faker = String(ID_faker).substring(2, 11);
+        ID_faker = ID_area + ID_faker ;
+    }
+
+    ID_create();
+
+</script>

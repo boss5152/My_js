@@ -1,0 +1,112 @@
+<html>
+
+<head>
+
+</head>
+<style>
+    table {
+        border-color: black;
+        border-style: solid;
+    }
+    tr {
+        border-color: black;
+        border-style: solid;
+        width: 100px;
+        height: 100px;
+    }
+    td {
+        border-color: black;
+        border-style: solid;
+        width: 100px;
+        height: 100px;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+
+    }
+</style>
+<script>
+    let step_now = 0; //當前走了幾步
+    let step_end = 0; //總共要走幾步
+    let set ; //當前位子
+    let set_front; //上一個位子
+    let timer;
+    function go() {
+        step_end = parseInt(Math.random()*30+20); //20-30
+        timer = setInterval(doThing, 1 * 80);
+    }
+    function doThing() {
+        set = step_now%16;
+        set_front = set-1;
+        if(set_front == -1){
+            set_front = 15;
+        }
+        document.getElementById(`${set_front}`).style.background = "white";
+        document.getElementById(`${set}`).style.background = "red";
+        step_now ++;
+        if(step_now == step_end){
+            stop();
+        }
+    }
+    function stop() {
+        let test = document.getElementsByName('bar');
+    console.log(test);
+        clearInterval(timer);
+    }
+    
+
+</script>
+
+
+<body>
+    <table>
+        <tr>
+            <td id="0"><img src="img/BAR.png"></td>
+            <td id="1"><img src="img/orange.jpg"></td>
+            <td id="2"><img src="img/lemon.jpg"></td>
+            <td id="3"><img src="img/bell.png"></td>
+            <td id="4"><img src="img/seven.png"></td>
+        </tr>
+        <tr>
+            <td id="15"><img src="img/apple.jpg"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td id="5"><img src="img/apple.jpg"></td>
+        </tr>
+        <tr>
+            <td id="14"><img src="img/lemon.jpg"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td id="6"><img src="img/orange.jpg"></td>
+        </tr>
+        <tr>
+            <td id="13"><img src="img/apple.jpg"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td style="border:white"></td>
+            <td id="7"><img src="img/bell.png"></td>
+        </tr>
+        <tr>
+            <td id="12"><img src="img/seven.png"></td>
+            <td id="11"><img src="img/bell.png"></td>
+            <td id="10"><img src="img/orange.jpg"></td>
+            <td id="9"><img src="img/lemon.jpg"></td>
+            <td id="8"><img src="img/BAR.png"></td>
+        </tr>
+    </table>
+    <hr>
+        <input type="radio" value="apple">apple
+        <input type="radio" value="orange">orange
+        <input type="radio" value="lemon">lemon
+        <input type="radio" value="bell">bell
+        <input type="radio" value="seven">777
+        <input type="radio" value="bar">BAR
+    <hr>
+    <input type="button" onclick="go()" value='GO'>
+    <input type="button" onclick="stop()" value="Stop">
+</body>
+
+</html>

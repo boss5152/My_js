@@ -1,0 +1,15 @@
+<script>
+    let obj = new Object();
+    bike.speed = 12;
+    bike.gear = 2;
+    bike.upSpeed = function(){
+        this.speed = this.speed * this.gear * 1.2;
+    }
+    bike.downSpeed = function(){
+        this.speed = this.speed * 0.7
+    }
+
+    document.write(bike.speed = "<br>");
+    bike.upSpeed();
+    document.write(bike.spped = '<br>');
+</script>

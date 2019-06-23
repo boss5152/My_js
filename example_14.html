@@ -1,0 +1,24 @@
+<meta charset = "utf-8">
+
+<script>
+    Date.prototype.getCWeek = function(){
+        let W = this.getDay();
+        let ws = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        return ws[W];
+    }
+    
+    function showNow(){
+        let now = new Date();
+        let nowString = now.getFullYear() + "." + 
+        (now.getMonth()+1) + "." +
+        now.getDate() + "." + 
+        now.getHours() + "." +
+        now.getMinutes() + "." + 
+        now.getSeconds() + "." + now.getCWeek;
+        document.getElementById('now').innerHTML = nowString;  
+    }
+
+    setInterval(showNow,500);
+
+</script>
+<span id='now'></span>

@@ -1,0 +1,23 @@
+<script>
+    let xhttp = new XMLHttpRequest();
+
+    function callback(){
+        console.log("back ok : ");
+        let stste = xhttp.readyState;
+        let status = xhttp.status;
+        if(status == 4){
+            
+        }
+    }
+
+    function sendTest(){
+        let max = document.getElementById('max').value;
+        xhttp.onreadystatechange = callback;
+        xhttp.open("GET","brad01.php",true);
+        xhttp.send();
+    }
+</script>
+
+<h1>123</h1>
+
+<input type="button" value="123" onclick="sendTest()">

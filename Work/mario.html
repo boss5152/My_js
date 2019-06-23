@@ -7,54 +7,148 @@
     table {
         border-color: black;
         border-style: solid;
+        text-align: center;
     }
+
     tr {
         border-color: black;
         border-style: solid;
         width: 100px;
         height: 100px;
     }
+
     td {
         border-color: black;
         border-style: solid;
         width: 100px;
         height: 100px;
     }
-    img{
-        width: 100px;
-        height: 100px;
+
+    img {
+        width: 90px;
+        height: 90px;
+        display: block;
+        line-height: 90px;
+        text-align: center;
 
     }
 </style>
 <script>
-    let step_now = 0; //當前走了幾步
-    let step_end = 0; //總共要走幾步
-    let set ; //當前位子
+    let step_now = parseInt(Math.random() * 15); //當前走了幾步
+    let step_end = 0; //決定要走幾步
+    let set = 0 //當前位子
     let set_front; //上一個位子
     let timer;
+    let item = null; //紀錄下注哪個
+    let credit = 1000;
+    // let isClickDisable = false;
+    // $(`#go`).click(function(){
+    //     $(tihs).attr('disabled',isClickDisable)
+    // })
+
+
+    function close_mode(bool) {
+        document.getElementById("apple").disabled = bool;
+        document.getElementById("orange").disabled = bool;
+        document.getElementById("lemon").disabled = bool;
+        document.getElementById("bell").disabled = bool;
+        document.getElementById("seven").disabled = bool;
+        document.getElementById("bar").disabled = bool;
+        document.getElementById("go").disabled = bool;
+    }
+
+
     function go() {
-        step_end = parseInt(Math.random()*30+20); //20-30
+        check_item();
+        if (item == null) {
+            alert("請下注");
+            return;
+        }
+
+        close_mode(true);
+        credit -= 10;
+        player_credit.innerHTML = credit;
+        step_end = parseInt(Math.random() * 30 + 20); //20-30
         timer = setInterval(doThing, 1 * 80);
     }
     function doThing() {
-        set = step_now%16;
-        set_front = set-1;
-        if(set_front == -1){
+        //決定哪個變紅色用
+        set = step_now % 16;
+        set_front = set - 1;
+        if (set_front == -1) {
             set_front = 15;
         }
         document.getElementById(`${set_front}`).style.background = "white";
         document.getElementById(`${set}`).style.background = "red";
-        step_now ++;
-        if(step_now == step_end){
+
+        step_now++;
+        if (step_now == step_end) {
             stop();
         }
     }
     function stop() {
-        let test = document.getElementsByName('bar');
-    console.log(test);
+        step_now = set;
+        close_mode(false);
         clearInterval(timer);
+        get_point();
     }
-    
+
+    function check_item() {
+        let obj = document.getElementsByName("bet");
+        for (let i = 0; i < obj.length; i++) {
+            if (obj[i].checked) {
+                item = obj[i].value;
+            }
+        }
+
+    }
+
+    function get_point() {
+        switch (set) {
+            case 0:
+            case 8:
+                if (item == "BAR") {
+                    credit += 30;
+                }
+                break;
+            case 5:
+            case 13:
+            case 15:
+                if (item == "apple") {
+                    credit += 20;
+                }
+                break;
+            case 1:
+            case 6:
+            case 10:
+                if (item == "orange") {
+                    credit += 20;
+                }
+                break;
+            case 2:
+            case 9:
+            case 14:
+                if (item == "lemon") {
+                    credit += 20;
+                }
+                break;
+            case 3:
+            case 7:
+            case 11:
+                if (item == "bell") {
+                    credit += 20;
+                }
+                break;
+            case 4:
+            case 12:
+                if (item == "seven") {
+                    credit += 30;
+                }
+                break;
+        }
+        player_credit.innerHTML = credit;
+    }
+
 
 </script>
 
@@ -71,7 +165,10 @@
         <tr>
             <td id="15"><img src="img/apple.jpg"></td>
             <td style="border:white"></td>
-            <td style="border:white"></td>
+            <td style="border:white">
+                籌碼 :
+                <span id="player_credit">1000</span>
+            </td>
             <td style="border:white"></td>
             <td id="5"><img src="img/apple.jpg"></td>
         </tr>
@@ -98,15 +195,15 @@
         </tr>
     </table>
     <hr>
-        <input type="radio" value="apple">apple
-        <input type="radio" value="orange">orange
-        <input type="radio" value="lemon">lemon
-        <input type="radio" value="bell">bell
-        <input type="radio" value="seven">777
-        <input type="radio" value="bar">BAR
+    <span>請下注，一注10元 : </span>
+    <input type="radio" name="bet" id="apple" value="apple">apple
+    <input type="radio" name="bet" id="orange" value="orange">orange
+    <input type="radio" name="bet" id="lemon" value="lemon">lemon
+    <input type="radio" name="bet" id="bell" value="bell">bell
+    <input type="radio" name="bet" id="seven" value="seven">777
+    <input type="radio" name="bet" id="bar" value="bar">BAR
     <hr>
-    <input type="button" onclick="go()" value='GO'>
-    <input type="button" onclick="stop()" value="Stop">
+    <input type="button" id="go" onclick="go()" value='GO'>
 </body>
 
 </html>

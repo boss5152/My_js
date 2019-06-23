@@ -1,0 +1,36 @@
+<script>
+    class Bike{
+        constructor(speed){
+            console.log("new");
+            this.speed = speed;
+            this.name = '';
+        }
+        upSpeed(){
+        this.speed += 1.2;
+    }
+    }
+    
+
+    class Scooter extends Bike{
+        constructor(speed,gear){
+            super(speed);
+            this.speed = speed;
+            this.gear = gear;
+            console.log("new scooter");
+        }
+        setGear(gear){
+            this.gear = gear;
+        }
+        upSpeed(){
+            this.speed = this.speed*(this.gear + 1.2);
+        }
+    }
+
+    let b1 = new Bike(12);
+    console.log(b1.speed);
+    console.log(b1.name);
+
+    let s1 = new Scooter();
+    console.log(s1.speed);
+    console.log(s1.name);
+</script>

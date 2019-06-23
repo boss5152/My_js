@@ -1,0 +1,36 @@
+<script>
+    person = {
+        name: 'Brad',
+        age: 18,
+        weight: 100,
+        bike: [
+            {
+                name: "bb",
+                speed: 10
+            },
+            {
+                name: "yy",
+                speed : 20
+            }
+        ]
+    };
+    let setperson = JSON.stringify(person);
+    console.log(setperson);
+
+    let person2 =  JSON.parse(setperson);
+    console.log(typeof person2);
+    for(let key in person2){
+        console.log(key + ":" + person2[key]);
+    }
+    console.log(person === person2);
+
+    console.log(person2.name);
+    console.log(person2.bike[1].name);
+    person2.name = 'Eric';
+    person2.bike[1].speed = 200;
+
+    console.log(person.name);
+    console.log(person.bike[1].speed);
+    console.log(person2.name);
+    console.log(person2.bike[1].speed);
+</script>

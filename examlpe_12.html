@@ -1,0 +1,32 @@
+<script>
+    let bike = {
+        a : 11,
+        b : 22,
+        m1 : function(){
+            console.log("bike:m1()" + this.a);
+        }
+    }
+
+    let person = {
+        name : "",
+        mybike : Object.create(bike)
+
+    }
+    
+    let b1 = Object.create(bike);
+    for(let key in b1){
+        console.log(key + ":" + b1[key]);
+    }
+
+    let p1 = Object.create(person);
+    p1.name = 'Brad';
+    p1.mybike.a = 35;
+    console.log(p1.name + ":" + p1.mybike.a);
+
+    let p2 = Object.create(p1);
+    p2.name = "Mary";
+    p2.mybike.a = 44;
+    console.log(p1.name + ":" + p1.mybike.a);
+    console.log(p2.name + ":" + p2.mybike.a);
+
+</script>
